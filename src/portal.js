@@ -6,6 +6,8 @@ const BUCKET = 'modelos-3d'
 const FORMATOS = ['stl', 'obj', '3mf', 'glb']
 const WHATSAPP = CONTATO.whatsapp
 const CACHE = '31536000' // 1 ano: arquivos com nome único nunca mudam
+const LOGO = '/logo.png'
+const logoHtml = `<a href="/" class="logo-link"><img class="logo-img" src="${LOGO}" alt="Ao Cubo³"></a>`
 
 const app = () => document.querySelector('#app')
 const linkDe = (id) => `${location.origin}${location.pathname}#/modelo/${id}`
@@ -125,7 +127,7 @@ export async function carregarGaleria(box, coluna = 'publico', textoVazio = 'Em 
 async function paginaPublica(id) {
   app().innerHTML = `
     <main class="portal">
-      <header class="portal-top"><strong>Ao Cubo³</strong><span>VISUALIZADOR 3D</span></header>
+      <header class="portal-top">${logoHtml}<span>VISUALIZADOR 3D</span></header>
 
       <section class="p-head">
         <span class="eyebrow">MODELO 3D</span>
@@ -135,6 +137,7 @@ async function paginaPublica(id) {
 
       <div class="viewer-wrap" id="wrap">
         <div id="viewer-3d"></div>
+        <img class="viewer-logo" src="${LOGO}" alt="">
 
         <div class="loading" id="loading">
           <div class="bar"><span id="bar"></span></div>
@@ -166,7 +169,7 @@ async function paginaPublica(id) {
       <div class="stats" id="stats"></div>
 
       <a class="btn zap" id="zap" target="_blank" rel="noopener">Falar com a Ao Cubo³ sobre este modelo</a>
-      <footer class="portal-foot">Ao Cubo³ · Impressão 3D</footer>
+      <footer class="portal-foot">${logoHtml}<span>Impressão 3D e Sistemas Digitais</span></footer>
     </main>`
 
   const nome = document.querySelector('#p-nome')

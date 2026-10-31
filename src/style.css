@@ -566,3 +566,11 @@ a.contact-card:hover { border-color: #1685ff; transform: translateY(-3px); }
   transition: transform .2s;
 }
 .zap-float:hover { transform: scale(1.08); }
+.logo-link { display: inline-flex; align-items: center; }
+.logo-img { height: 38px; width: auto; display: block; }
+
+.viewer-logo { position: absolute; left: 14px; top: 12px; height: 26px; width: auto; opacity: .85; pointer-events: none; z-index: 1; }
+.hint { top: 48px !important; }
+
+.portal-foot { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.portal-foot .logo-img { height: 30px; opacity: .8; }
