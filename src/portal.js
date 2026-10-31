@@ -1,9 +1,10 @@
 import { supabase } from './supabase.js'
 import { createViewer } from './viewer.js'
+import { CONTATO } from './config.js'
 
 const BUCKET = 'modelos-3d'
 const FORMATOS = ['stl', 'obj', '3mf', 'glb']
-const WHATSAPP = '5563992045593' // 55 + DDD + número, só dígitos
+const WHATSAPP = CONTATO.whatsapp
 const CACHE = '31536000' // 1 ano: arquivos com nome único nunca mudam
 
 const app = () => document.querySelector('#app')

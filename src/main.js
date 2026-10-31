@@ -1,5 +1,6 @@
 import './style.css'
 import { initPortal, carregarGaleria } from './portal.js'
+import { CONTATO } from './config.js'
 
 document.querySelector('#app').innerHTML = `
   <header class="header">
@@ -119,6 +120,50 @@ document.querySelector('#app').innerHTML = `
   <div id="galeria-vendidos" class="galeria"></div>
   </section>
 </section>
+<section class="contact-section" id="contato">
+  <div class="section-header">
+    <span class="eyebrow">CONTATO</span>
+    <h2>Vamos imprimir sua ideia?</h2>
+    <p>Fale com a gente e peça o seu orçamento.</p>
+  </div>
+
+  <div class="contact-grid">
+    <a class="contact-card" target="_blank" rel="noopener"
+       href="https://wa.me/${CONTATO.whatsapp}?text=${encodeURIComponent('Olá! Vim pelo site da Ao Cubo³ e gostaria de um orçamento.')}">
+      <small>WHATSAPP</small>
+      <strong>${CONTATO.whatsappExibido}</strong>
+      <span>Resposta mais rápida</span>
+    </a>
+
+    <a class="contact-card" href="mailto:${CONTATO.email}">
+      <small>E-MAIL</small>
+      <strong>${CONTATO.email}</strong>
+      <span>Envie arquivos e detalhes do projeto</span>
+    </a>
+
+    ${CONTATO.instagram ? `
+    <a class="contact-card" target="_blank" rel="noopener"
+       href="https://instagram.com/${CONTATO.instagram}">
+      <small>INSTAGRAM</small>
+      <strong>@${CONTATO.instagram}</strong>
+      <span>Veja nossos trabalhos</span>
+    </a>` : ''}
+
+    ${CONTATO.cidade ? `
+    <div class="contact-card">
+      <small>LOCALIZAÇÃO</small>
+      <strong>${CONTATO.cidade}</strong>
+      <span>Atendimento e envios</span>
+    </div>` : ''}
+  </div>
+</section>
+
+<footer class="site-footer">© ${new Date().getFullYear()} Ao Cubo³ · Impressão 3D e Sistemas Digitais</footer>
+
+<a class="zap-float" target="_blank" rel="noopener"
+   href="https://wa.me/${CONTATO.whatsapp}?text=${encodeURIComponent('Olá! Vim pelo site da Ao Cubo³.')}">
+  WhatsApp
+</a>
   </main>
 
   <footer class="footer">
