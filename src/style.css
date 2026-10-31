@@ -550,4 +550,19 @@ a.contact-card:hover { border-color: #1685ff; transform: translateY(-3px); }
 
 .site-footer { text-align: center; padding: 28px 5%; color: #5d6b7c; font-size: 13px; border-top: 1px solid #263547; background: #0b1017; }
 
-.zap-float:hover { filter: brightness(1.08); }
+.zap-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .45);
+  transition: transform .2s;
+}
+.zap-float:hover { transform: scale(1.08); }
