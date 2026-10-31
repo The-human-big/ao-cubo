@@ -80,7 +80,7 @@ document.querySelector('#app').innerHTML = `
       </div>
 
       <div class="empty-projects">
-        <div class="empty-icon">◇</div>
+        
           <div id="galeria-destaque" class="galeria"></div>
         <p>
           Veja de perto o que fazemos.
