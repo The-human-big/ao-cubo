@@ -64,10 +64,7 @@ document.querySelector('#app').innerHTML = `
     </div>
   </div>
 </div>
-        <div class="floating-label">
-          <span>01 / 03</span>
-          <strong>DESIGN EM 3D</strong>
-        </div>
+        
       </div>
     </section>
 
