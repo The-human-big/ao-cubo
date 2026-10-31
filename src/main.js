@@ -85,8 +85,7 @@ document.querySelector('#app').innerHTML = `
         <div class="empty-icon">◇</div>
           <div id="galeria-destaque" class="galeria"></div>
         <p>
-          Estamos preparando uma experiência para você
-          explorar nossos modelos em três dimensões.
+          Veja de perto o que fazemos.
         </p>
       </div>
     </section>
