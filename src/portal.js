@@ -73,8 +73,8 @@ export function initPortal() {
 }
 
 /* ---------- Galeria da página inicial ---------- */
-
 export async function carregarGaleria(box, coluna = 'publico', textoVazio = 'Em breve, novos modelos por aqui.') {
+  box.className = 'carrossel'
   box.innerHTML = '<p class="muted">Carregando modelos…</p>'
   const { data, error } = await supabase
     .from('modelos')
@@ -93,6 +93,17 @@ export async function carregarGaleria(box, coluna = 'publico', textoVazio = 'Em 
   }
 
   box.innerHTML = ''
+  const prev = document.createElement('button')
+  prev.className = 'car-btn prev'
+  prev.setAttribute('aria-label', 'Anterior')
+  prev.textContent = '‹'
+  const next = document.createElement('button')
+  next.className = 'car-btn next'
+  next.setAttribute('aria-label', 'Próximo')
+  next.textContent = '›'
+  const track = document.createElement('div')
+  track.className = 'car-track'
+
   for (const m of data) {
     const a = document.createElement('a')
     a.className = 'gcard'
@@ -107,6 +118,7 @@ export async function carregarGaleria(box, coluna = 'publico', textoVazio = 'Em 
       img.decoding = 'async'
       img.width = 800
       img.height = 600
+      img.draggable = false
       a.append(img)
     } else {
       const vazio = document.createElement('div')
@@ -119,8 +131,22 @@ export async function carregarGaleria(box, coluna = 'publico', textoVazio = 'Em 
     leg.className = 'glegenda'
     leg.textContent = m.nome
     a.append(leg)
-    box.append(a)
+    track.append(a)
   }
+
+  box.append(prev, track, next)
+
+  const passo = () => track.clientWidth * 0.8
+  prev.onclick = () => track.scrollBy({ left: -passo(), behavior: 'smooth' })
+  next.onclick = () => track.scrollBy({ left: passo(), behavior: 'smooth' })
+
+  const atualizar = () => {
+    prev.hidden = track.scrollLeft < 8
+    next.hidden = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8
+  }
+  track.addEventListener('scroll', atualizar, { passive: true })
+  window.addEventListener('resize', atualizar)
+  requestAnimationFrame(atualizar)
 }
 /* ---------- Página do cliente ---------- */
 

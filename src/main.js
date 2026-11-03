@@ -1,6 +1,8 @@
 import './style.css'
 import { initPortal, carregarGaleria } from './portal.js'
 import { CONTATO } from './config.js'
+import { ICONES } from './icones.js'
+
 
 document.querySelector('#app').innerHTML = `
   <header class="header">
@@ -128,34 +130,46 @@ document.querySelector('#app').innerHTML = `
   </div>
 
   <div class="contact-grid">
-    <a class="contact-card" target="_blank" rel="noopener"
-       href="https://wa.me/${CONTATO.whatsapp}?text=${encodeURIComponent('Olá! Vim pelo site da Ao Cubo³ e gostaria de um orçamento.')}">
+  <a class="contact-card" target="_blank" rel="noopener"
+     href="https://wa.me/${CONTATO.whatsapp}?text=${encodeURIComponent('Olá! Vim pelo site da Ao Cubo³ e gostaria de um orçamento.')}">
+    <div class="contact-icon zap">${ICONES.whatsapp}</div>
+    <div class="contact-text">
       <small>WHATSAPP</small>
       <strong>${CONTATO.whatsappExibido}</strong>
       <span>Resposta mais rápida</span>
-    </a>
+    </div>
+  </a>
 
-    <a class="contact-card" href="mailto:${CONTATO.email}">
+  <a class="contact-card" href="mailto:${CONTATO.email}">
+    <div class="contact-icon mail">${ICONES.email}</div>
+    <div class="contact-text">
       <small>E-MAIL</small>
-      <strong>${CONTATO.email}</strong>
+      <strong>${CONTATO.email.replace('@', '<wbr>@')}</strong>
       <span>Envie arquivos e detalhes do projeto</span>
-    </a>
+    </div>
+  </a>
 
-    ${CONTATO.instagram ? `
-    <a class="contact-card" target="_blank" rel="noopener"
-       href="https://instagram.com/${CONTATO.instagram}">
+  ${CONTATO.instagram ? `
+  <a class="contact-card" target="_blank" rel="noopener"
+     href="https://instagram.com/${CONTATO.instagram}">
+    <div class="contact-icon insta">${ICONES.instagram}</div>
+    <div class="contact-text">
       <small>INSTAGRAM</small>
       <strong>@${CONTATO.instagram}</strong>
       <span>Veja nossos trabalhos</span>
-    </a>` : ''}
+    </div>
+  </a>` : ''}
 
-    ${CONTATO.cidade ? `
-    <div class="contact-card">
+  ${CONTATO.cidade ? `
+  <div class="contact-card">
+    <div class="contact-icon local">${ICONES.local}</div>
+    <div class="contact-text">
       <small>LOCALIZAÇÃO</small>
       <strong>${CONTATO.cidade}</strong>
       <span>Atendimento e envios</span>
-    </div>` : ''}
-  </div>
+    </div>
+  </div>` : ''}
+</div>
 </section>
 
 <footer class="site-footer">© ${new Date().getFullYear()} Ao Cubo³ · Impressão 3D e Sistemas Digitais</footer>
